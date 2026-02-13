@@ -14,8 +14,10 @@ Disciplined workflow that prevents wasted effort by separating thinking from typ
 ## Workflow
 
 ```
-Research → Plan → Annotate (1-6x) → Todo List → Implement → Feedback → Archive
+Research → Plan → [Interview] → Annotate (1-6x) → Todo List → Implement → Feedback → Archive
 ```
+
+`[Interview]` is optional — an interactive Q&A to resolve ambiguities before annotation. See Phase 2 reference for triggers and process.
 
 **Critical guard**: Do NOT advance to the next phase unless the user explicitly says to. When in doubt, ask.
 
