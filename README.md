@@ -1,10 +1,10 @@
 # deep-plan
 
-A structured workflow skill for AI-assisted development. Separates planning from execution to prevent wasted effort and produce better results.
+A structured workflow skill for AI-assisted development. Separates planning from execution to prevent wasted effort.
 
 ## What It Does
 
-Enforces a disciplined pipeline: research the codebase deeply, write a plan, let the user annotate the plan until it's right, then execute the whole thing without stopping.
+Research the codebase, write a plan, let the user annotate the plan until it's right, then execute without stopping.
 
 ```
 Research → Plan → [Interview] → Annotate (1-6x) → Todo List → Implement → Feedback → Archive
@@ -69,21 +69,21 @@ Then describe what you want to build. The skill guides you through each phase.
 
 ### The Workflow
 
-**Phase 1: Research** — The agent deep-reads the relevant codebase and writes findings to `.claude/research.md`. You review it to verify the agent actually understood the system.
+**Phase 1: Research.** The agent deep-reads the relevant codebase and writes findings to `.claude/research.md`. You review it to verify the agent actually understood the system.
 
-**Phase 2: Plan** — The agent writes a detailed implementation plan to `.claude/plan.md` with code snippets, file paths, and trade-offs.
+**Phase 2: Plan.** The agent writes a detailed implementation plan to `.claude/plan.md` with code snippets, file paths, and trade-offs.
 
-**Phase 2b: Interview (optional)** — If the plan has ambiguities the agent can't resolve from the codebase alone, it runs an interactive Q&A before handing the plan to you. Covers architectural choices (sync vs async, data modeling, migration strategy), API design, performance trade-offs, and UI/UX decisions. Answers get woven directly into the plan — no transcript appended. This saves annotation cycles by resolving open questions upfront.
+**Phase 2b: Interview (optional).** If the plan has ambiguities the agent can't resolve from the codebase alone, it runs an interactive Q&A before handing the plan to you. Covers architectural choices (sync vs async, data modeling, migration strategy), API design, performance trade-offs, and UI/UX decisions. Answers get woven directly into the plan, not appended as a transcript. Saves annotation cycles by resolving open questions upfront.
 
-**Phase 3: Annotate** — You open the plan in your editor and add inline notes directly into the document. Corrections, rejections, domain knowledge, scope cuts. Then tell the agent to update the plan. Repeat 1-6 times until you're satisfied.
+**Phase 3: Annotate.** You open the plan in your editor and add inline notes directly into the document. Corrections, rejections, domain knowledge, scope cuts. Then tell the agent to update the plan. Repeat 1-6 times until you're satisfied.
 
-**Phase 4: Todo List** — The agent adds a granular task breakdown with checkboxes to the plan.
+**Phase 4: Todo List.** The agent adds a granular task breakdown with checkboxes to the plan.
 
-**Phase 5: Implement** — The agent executes the entire plan, marking tasks complete as it goes. Runs typecheck continuously.
+**Phase 5: Implement.** The agent executes the entire plan, marking tasks complete as it goes. Runs typecheck continuously.
 
-**Phase 6: Feedback** — You test, find issues, fire off terse corrections. The agent has full context so short messages work.
+**Phase 6: Feedback.** You test, find issues, fire off terse corrections. The agent has full context so short messages work.
 
-**Phase 7: Archive** — The completed plan moves to `docs/completed-tasks/` for project history.
+**Phase 7: Archive.** The completed plan moves to `docs/completed-tasks/` for project history.
 
 ### Example Annotations
 
@@ -93,7 +93,7 @@ Notes you'd add directly into plan.md:
 use drizzle:generate for migrations, not raw SQL
 ```
 ```
-no — this should be a PATCH, not a PUT
+no, this should be a PATCH, not a PUT
 ```
 ```
 remove this section entirely, we don't need caching here
@@ -159,7 +159,7 @@ This workflow fixes that by separating thinking from typing:
 - **The annotation cycle** injects your judgement (product priorities, domain knowledge, trade-offs)
 - **The implementation command** lets the agent run without interruption once every decision is made
 
-The annotation cycle is where you add the most value. Three rounds of "I added notes, update the plan" can transform a generic implementation plan into one that fits perfectly into the existing system.
+Three rounds of "I added notes, update the plan" can turn a generic implementation plan into one that fits the existing system exactly.
 
 ## Credit
 
