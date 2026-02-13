@@ -7,7 +7,7 @@ A structured workflow skill for AI-assisted development. Separates planning from
 Enforces a disciplined pipeline: research the codebase deeply, write a plan, let the user annotate the plan until it's right, then execute the whole thing without stopping.
 
 ```
-Research → Plan → Annotate (1-6x) → Todo List → Implement → Feedback → Archive
+Research → Plan → [Interview] → Annotate (1-6x) → Todo List → Implement → Feedback → Archive
 ```
 
 The core principle: never let the agent write code until you've reviewed and approved a written plan.
@@ -72,6 +72,8 @@ Then describe what you want to build. The skill guides you through each phase.
 **Phase 1: Research** — The agent deep-reads the relevant codebase and writes findings to `.claude/research.md`. You review it to verify the agent actually understood the system.
 
 **Phase 2: Plan** — The agent writes a detailed implementation plan to `.claude/plan.md` with code snippets, file paths, and trade-offs.
+
+**Phase 2b: Interview (optional)** — If the plan has ambiguities the agent can't resolve from the codebase alone, it runs an interactive Q&A before handing the plan to you. Covers architectural choices (sync vs async, data modeling, migration strategy), API design, performance trade-offs, and UI/UX decisions. Answers get woven directly into the plan — no transcript appended. This saves annotation cycles by resolving open questions upfront.
 
 **Phase 3: Annotate** — You open the plan in your editor and add inline notes directly into the document. Corrections, rejections, domain knowledge, scope cuts. Then tell the agent to update the plan. Repeat 1-6 times until you're satisfied.
 
